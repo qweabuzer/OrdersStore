@@ -2,7 +2,7 @@
 
 namespace OrdersStore.API.Contracts
 {
-    public class OrderRequest
+/*    public class OrderRequest
     {
         [DefaultValue("")]
         public string SenderCity { get; set; } = string.Empty;
@@ -15,5 +15,13 @@ namespace OrdersStore.API.Contracts
         [DefaultValue(1)]
         public decimal Weight { get; set; } = 1;
         public DateOnly PickupDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
-    }
+    }*/
+
+    public record OrderRequest(
+        string SenderCity,
+        string SenderAddress,
+        string RecipientCity,
+        string RecipientAddress,
+        decimal Weight,
+        DateOnly PickupDate);
 }

@@ -98,10 +98,10 @@ namespace OrdersStore.DataAccess.Repositories
         {
             var order = await _context.Orders
                 .FirstOrDefaultAsync(o => o.SerialNumber == serialNumber);
-            if (order != null)
-                return false;
+            if (order == null)
+                return true;
 
-            return true;
+            return false;
         }
     }
 }

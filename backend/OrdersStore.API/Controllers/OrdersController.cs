@@ -24,6 +24,7 @@ namespace OrdersStore.API.Controllers
             var orders = await _ordersService.GetAllOrders();
             var response = orders
                 .Select(o => new OrderResponse(
+                    o.Id,
                     o.SerialNumber,
                     o.SenderCity,
                     o.SenderAddress,
@@ -43,6 +44,7 @@ namespace OrdersStore.API.Controllers
                 return NotFound(order.Error);
 
             var response = new OrderResponse(
+                order.Value.Id,
                 order.Value.SerialNumber,
                 order.Value.SenderCity,
                 order.Value.SenderAddress,

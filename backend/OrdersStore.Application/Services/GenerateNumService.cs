@@ -1,4 +1,5 @@
 ﻿using OrdersStore.Core.Interfaces;
+using System;
 
 namespace OrdersStore.Application.Services
 {
@@ -12,21 +13,18 @@ namespace OrdersStore.Application.Services
         }
         public async Task<int> GenerateNum()
         {
-            while (true)
+            Random rnd = new Random();
+            int num;
+            bool checkNum;
+
+            do
             {
-                var serialNumber = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff");
-
-                if (int.TryParse(serialNumber, out int num))
-                {
-                    var checkNum = await _ordersRepository.CheckNum(num);
-
-                    if (checkNum)
-                        return num;
-                }
-
-                await Task.Delay(1);
+                num = rnd.Next(1000, int.MaxValue);
+                checkNum = await _ordersRepository.CheckNum(num);
             }
+            while (!checkNum);
 
+            return num;
         }
     }
 }
