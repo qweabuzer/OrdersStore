@@ -1,0 +1,23 @@
+.formStyles{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;   
+}
+.formStyles .address {
+    width: 400px; 
+}
+
+.formStyles .weight{
+    width: 400px; 
+    float: left;
+}
+.formStyles .date{
+    width: 400px; 
+}
+
+.formStyles button{
+    margin-top: 10px;
+    width: 100px;
+} 
