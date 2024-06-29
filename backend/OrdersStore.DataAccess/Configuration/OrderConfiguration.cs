@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrdersStore.DataAccess.Entities;
-using System.ComponentModel;
 
 namespace OrdersStore.DataAccess.Configuration
 {

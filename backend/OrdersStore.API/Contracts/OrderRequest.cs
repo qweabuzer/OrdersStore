@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace OrdersStore.API.Contracts
+﻿namespace OrdersStore.API.Contracts
 {
     public record OrderRequest(
         string SenderCity,

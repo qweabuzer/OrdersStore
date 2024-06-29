@@ -96,12 +96,20 @@ namespace OrdersStore.DataAccess.Repositories
 
         public async Task<bool> CheckNum(int serialNumber)
         {
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(o => o.SerialNumber == serialNumber);
-            if (order == null)
-                return true;
+            try
+            {
+                var order = await _context.Orders
+                    .FirstOrDefaultAsync(o => o.SerialNumber == serialNumber);
+                if (order == null)
+                    return true;
 
-            return false;
+                return false;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return true;
+            }
         }
     }
 }
