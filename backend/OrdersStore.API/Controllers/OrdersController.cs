@@ -36,7 +36,7 @@ namespace OrdersStore.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("Id")]
         public async Task<ActionResult<OrderResponse>> GetOrderById(Guid id)
         {
             var order = await _ordersService.GetById(id);

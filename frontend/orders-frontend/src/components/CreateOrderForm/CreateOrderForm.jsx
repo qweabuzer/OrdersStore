@@ -2,16 +2,23 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
+import { useNavigate  } from 'react-router-dom';
 import './form.css';
 
 const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
+    const navigate = useNavigate();
+
+    const handleCancel = () => {
+        navigate(-1);
+    };
+
     return (
         <form className="formStyles" onSubmit={handleSubmit}>
             <TextField
                 required
                 id="senderCity"
                 name="senderCity" 
-                label="Sender City"
+                label="Город отправителя"
                 value={orderData.senderCity}
                 onChange={handleChange}
                 margin="dense"
@@ -21,7 +28,7 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 required
                 id="senderAddress"
                 name="senderAddress" 
-                label="Sender Address"
+                label="Адрес отправителя"
                 value={orderData.senderAddress}
                 onChange={handleChange}
                 margin="dense"
@@ -31,7 +38,7 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 required
                 id="recipientCity"
                 name="recipientCity" 
-                label="Recipient City"
+                label="Город получателя"
                 value={orderData.recipientCity}
                 onChange={handleChange}
                 margin="dense"
@@ -41,7 +48,7 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 required
                 id="recipientAddress"
                 name="recipientAddress" 
-                label="Recipient Address"
+                label="Адрес получателя"
                 value={orderData.recipientAddress}
                 onChange={handleChange}
                 margin="dense"
@@ -51,7 +58,7 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 required
                 id="weight"
                 name="weight" 
-                label="Weight"
+                label="Вес груза"
                 value={orderData.weight}
                 onChange={handleChange}
                 InputProps={{
@@ -66,7 +73,7 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 required
                 id="pickupDate"
                 name="pickupDate" 
-                label="Pickup Date"
+                label="Дата забора груза"
                 value={orderData.pickupDate}
                 onChange={handleChange}
                 margin="dense"
@@ -80,7 +87,16 @@ const CreateOrderForm = ({ handleSubmit, handleChange, orderData }) => {
                 margin="dense"
                 className="button"
             >
-                Submit
+                Создать
+            </Button>
+            <Button
+            type='cancel'
+            variant="outlined"
+            color="error"
+            margin="dense"
+            onClick={handleCancel}
+            >
+                Отменить
             </Button>
         </form>
     );

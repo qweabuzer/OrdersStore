@@ -24,7 +24,7 @@ namespace OrdersStore.Application.Services
             if (order == null)
                 return Result.Failure<Order>("Не удалось найти заказ");
 
-            return Result.Success<Order>(order);
+            return Result.Success(order);
         }
 
         public async Task<Result<Guid>> CreateOrder(Order order)
@@ -34,7 +34,7 @@ namespace OrdersStore.Application.Services
             if (orderId == Guid.Empty)
                 return Result.Failure<Guid>("Не удалось создать заказ");
 
-            return Result.Success<Guid>(orderId);
+            return Result.Success(orderId);
         }
 
         public async Task<Result> DeleteOrder(Guid id)

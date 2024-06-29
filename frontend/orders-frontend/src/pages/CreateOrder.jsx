@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createOrder } from '../services/api';
 import CreateOrderForm from '../components/CreateOrderForm/CreateOrderForm';
+import { Container, Typography, Box } from '@mui/material';
 
 const CreateOrder = () => {
     const [orderData, setOrderData] = useState({
@@ -32,55 +33,42 @@ const CreateOrder = () => {
         e.preventDefault();
         try {
             await createOrder(orderData);
-            alert('Order created successfully');
+            clearForm();
+            alert('Заказ успешно создан!');
         } catch (error) {
-            alert('Failed to create order');
+            alert('Не удалось создать заказ');
         }
     };
 
-    // return (
-    //     <div> 
-    //         <h1>Create Order</h1>
-    //         <form onSubmit={handleSubmit}>
-    //             <div>
-    //                 <label>Sender City:</label>
-    //                 <input type="text" name="senderCity" value={orderData.senderCity} onChange={handleChange} />
-    //             </div>
-    //             <div>
-    //                 <label>Sender Address:</label>
-    //                 <input type="text" name="senderAddress" value={orderData.senderAddress} onChange={handleChange} />
-    //             </div>
-    //             <div>
-    //                 <label>Recipient City:</label>
-    //                 <input type="text" name="recipientCity" value={orderData.recipientCity} onChange={handleChange} />
-    //             </div>
-    //             <div>
-    //                 <label>Recipient Address:</label>
-    //                 <input type="text" name="recipientAddress" value={orderData.recipientAddress} onChange={handleChange} />
-    //             </div>
-    //             <div>
-    //                 <label>Weight:</label>
-    //                 <input type="number" name="weight" value={orderData.weight} onChange={handleChange} />
-    //             </div>
-    //             <div>
-    //                 <label>Pickup Date:</label>
-    //                 <input type="date" name="pickupDate" value={orderData.pickupDate} onChange={handleChange} />
-    //             </div>
-    //             <button type="submit">Create Order</button>
-    //         </form>
-    //     </div>
-    // );
+    const clearForm = () => {
+        setOrderData({
+            senderCity: '',
+            senderAddress: '',
+            recipientCity: '',
+            recipientAddress: '',
+            weight: '',
+            pickupDate: '',
+        });
+    };
+
     console.log(orderData);
     return (
-      <div>
-        <CreateOrderForm
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          orderData={orderData}
-        />
-      </div>
+        <Container>
+            <Box display="flex" justifyContent="center" mt={4}
+            marginTop={10}
+            >
+                <Typography variant="h4" gutterBottom>
+                    Форма создания заказа
+                </Typography>
+            </Box>
+            <CreateOrderForm
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                orderData={orderData}
+            />
+        </Container>
     );
-
 };
+
 
 export default CreateOrder;

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_BASE_URL = 'https://localhost:7295';
 
-// Fetch all orders
 export const fetchOrders = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/Orders/GetAll`);
@@ -13,13 +12,24 @@ export const fetchOrders = async () => {
     }
 };
 
-// Create a new order
 export const createOrder = async (order) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/Orders/Create`, order);
         return response.data;
     } catch (error) {
         console.error('Ошибка при создании заказа', error);
+        throw error;
+    }
+};
+
+export const fetchOrderById = async (id) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/Orders/Id`, {
+            params: { id }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка при получении деталей заказа:', error);
         throw error;
     }
 };

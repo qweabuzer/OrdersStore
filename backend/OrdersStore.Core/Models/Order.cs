@@ -55,7 +55,7 @@ namespace OrdersStore.Core.Models
                 weight,
                 pickupDate);
 
-            return Result.Success<Order>(order);
+            return Result.Success(order);
         }
 
     }
