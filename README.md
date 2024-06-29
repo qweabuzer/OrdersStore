@@ -26,7 +26,7 @@
 
 ### Требования
 
-- Node.js v20.14.0 или выше
+- Node.js v20.14.0 или выш
 - npm v10.8.1 или выше
 - .NET SDK 8.0
 - SQL Server
@@ -40,16 +40,17 @@
    ```
 
 2. Установка зависимостей
-  - Фронтенд
+- Фронтенд
    ```bash
    cd frontend
    npm install
   ```
 - Бэкенд
   ```bash
-  cd backend
-  dotnet ef migrations add InitialCreate
-  dotnet ef database update
+   cd backend
+   cd OrdersStore.DataAccess
+   dotnet ef --startup-project ../OrdersStore.Api migrations add InitialCreate
+   dotnet ef --startup-project ../OrdersStore.Api database update
   ```
 ### Запуск
   - Фронтенд
@@ -82,5 +83,3 @@
 
 ### Обратная связь
    Если возникли какие-то проблемы напишите мне на почту: novodvorski.dev@gmail.com
-
-
